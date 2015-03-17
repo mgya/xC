@@ -16,12 +16,12 @@
 #ifdef NDEBUG
 
 #define XASSERT(exp)
-#define XDBGPRINTF(...)
+#define XDBGPRINTF(s)
 
 #else
 
-#define XASSERT(exp)      xdebug_assert(exp)
-#define XDBGPRINTF(...)   xdebug_printf(__VA_ARGS__)
+#define XASSERT(exp)    xdebug_assert(exp)
+#define XDBGPRINTF(s)   xdebug_printf(s)
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,11 +36,10 @@ void xdebug_assert(xbool_t exp);
 
 /**
  * @brief 调试信息输出的实现,请调用宏定义XDBGPRINTF,不要直接调用xdebug_printf
- * @param[in] format - 调试信息输出格式
- * @param[in] ... - 可变参序列
+ * @param[in] info - 调试信息
  * @return - 无
  */
-void xdebug_printf(const xchar_t * format, ...);
+void xdebug_printf(const xchar_t * info);
 
 #ifdef __cplusplus
 }
